@@ -71,7 +71,172 @@
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     document.getElementById(id).classList.add('active');
      }
-      
+      // ===== Canvas =====
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 1200;
+canvas.height = 700;
+
+// ===== Images =====
+const bg = new Image();
+bg.src = "assets/background.png";
+
+const tree = new Image();
+tree.src = "assets/tree.png";
+
+const factory = new Image();
+factory.src = "assets/factory.png";
+
+// ===== Game =====
+let game = {
+    money: 500,
+    wood: 0,
+    trees: 25,
+    furniture: 0,
+    day: 1,
+    contractAccepted: false,
+    showContract: true
+};
+
+// ===== Tree Positions =====
+let forest = [];
+
+for (let i = 0; i < game.trees; i++) {
+
+    forest.push({
+        x: Math.random() * 650 + 30,
+        y: Math.random() * 350 + 250
+    });
+
+}
+
+// ===== Buttons =====
+const acceptBtn = {
+    x: 470,
+    y: 430,
+    w: 260,
+    h: 60
+};
+
+// ===== Mouse =====
+canvas.addEventListener("click", function(e){
+
+    const rect = canvas.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    if(game.showContract){
+
+        if(
+            x > acceptBtn.x &&
+            x < acceptBtn.x + acceptBtn.w &&
+            y > acceptBtn.y &&
+            y < acceptBtn.y + acceptBtn.h
+        ){
+
+            game.contractAccepted = true;
+            game.showContract = false;
+
+        }
+
+    }
+
+});
+
+// ===== Draw =====
+function draw(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Background
+    if(bg.complete)
+        ctx.drawImage(bg,0,0,canvas.width,canvas.height);
+    else{
+        ctx.fillStyle="#98d98e";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+    }
+
+    // Trees
+    forest.forEach(t=>{
+
+        if(tree.complete){
+            ctx.drawImage(tree,t.x,t.y,50,70);
+        }else{
+
+            ctx.fillStyle="green";
+            ctx.beginPath();
+            ctx.arc(t.x+25,t.y+20,20,0,Math.PI*2);
+            ctx.fill();
+
+            ctx.fillStyle="brown";
+            ctx.fillRect(t.x+20,t.y+25,10,35);
+
+        }
+
+    });
+
+    // Factory
+    if(factory.complete){
+        ctx.drawImage(factory,820,170,300,300);
+    }else{
+
+        ctx.fillStyle="#555";
+        ctx.fillRect(850,200,220,180);
+
+    }
+
+    // HUD
+    ctx.fillStyle="black";
+    ctx.font="24px Arial";
+
+    ctx.fillText("Money : $" + game.money,20,40);
+    ctx.fillText("Wood : " + game.wood,20,75);
+    ctx.fillText("Trees : " + forest.length,20,110);
+    ctx.fillText("Furniture : " + game.furniture,20,145);
+
+    // Contract Popup
+    if(game.showContract){
+
+        ctx.fillStyle="rgba(0,0,0,0.7)";
+        ctx.fillRect(300,120,600,400);
+
+        ctx.fillStyle="white";
+        ctx.font="34px Arial";
+        ctx.fillText("NEW CONTRACT",430,180);
+
+        ctx.font="24px Arial";
+        ctx.fillText("Customer : City School",360,240);
+        ctx.fillText("Order : 20 Wooden Desks",360,285);
+        ctx.fillText("Reward : $800",360,330);
+
+        ctx.fillStyle="#2ecc71";
+        ctx.fillRect(
+            acceptBtn.x,
+            acceptBtn.y,
+            acceptBtn.w,
+            acceptBtn.h
+        );
+
+        ctx.fillStyle="white";
+        ctx.font="28px Arial";
+        ctx.fillText("ACCEPT",540,470);
+
+    }
+
+}
+
+// ===== Loop =====
+function gameLoop(){
+
+    draw();
+
+    requestAnimationFrame(gameLoop);
+
+}
+
+gameLoop();
     </script>
   </body>
 </html>
