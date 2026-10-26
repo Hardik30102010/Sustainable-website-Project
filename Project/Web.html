@@ -367,6 +367,10 @@ function draw(){
         ctx.fillRect(850,200,220,180);
 
     }
+    if (owner.complete && owner.naturalWidth > 0) {
+    ctx.drawImage(owner, 740, 350, 80, 100);
+      }
+  
 
     // HUD
     ctx.fillStyle="black";
