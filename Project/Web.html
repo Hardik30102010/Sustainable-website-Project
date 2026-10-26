@@ -197,7 +197,11 @@ function draw(){
     ctx.fillText("Wood : " + game.wood,20,75);
     ctx.fillText("Trees : " + forest.length,20,110);
     ctx.fillText("Furniture : " + game.furniture,20,145);
+ctx.fillText("Contract : " + game.furniture + " / " + game.contractGoal,20,180);
 
+ctx.font = "18px Arial";
+ctx.fillText("Click trees to collect wood.",20,220);
+ctx.fillText("Press SPACE to build furniture.",20,245);
     // Contract Popup
     if(game.showContract){
 
