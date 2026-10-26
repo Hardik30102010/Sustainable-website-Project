@@ -239,6 +239,58 @@ function gameLoop(){
 }
 
 gameLoop();
+      // ===== Contract =====
+game.contractGoal = 20;
+
+// ===== Cut Trees =====
+canvas.addEventListener("click", function(e){
+
+    if(!game.contractAccepted) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    for(let i = forest.length - 1; i >= 0; i--){
+
+        const t = forest[i];
+
+        if(
+            mx >= t.x &&
+            mx <= t.x + 50 &&
+            my >= t.y &&
+            my <= t.y + 70
+        ){
+
+            forest.splice(i,1);
+
+            game.wood += 5;
+
+            break;
+        }
+
+    }
+
+});
+
+// ===== Make Furniture =====
+document.addEventListener("keydown", function(e){
+
+    if(!game.contractAccepted) return;
+
+    if(e.code === "Space"){
+
+        if(game.wood >= 5){
+
+            game.wood -= 5;
+            game.furniture++;
+            game.money += 40;
+
+        }
+
+    }
+
+});
     </script>
   </body>
 </html>
