@@ -291,6 +291,34 @@ canvas.addEventListener("click", function(e){
 
     }
 
+}); 
+      canvas.addEventListener("click", function(e){
+
+    if(!game.canPlant) return;
+
+    const rect = canvas.getBoundingClientRect();
+
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    // Plant button
+    if(
+        mx >= 950 &&
+        mx <= 1150 &&
+        my >= 600 &&
+        my <= 660
+    ){
+
+        forest.push({
+            x: Math.random()*650+30,
+            y: Math.random()*350+250
+        });
+
+        game.canPlant = false;
+        game.showWarning = false;
+
+    }
+
 });
 
 // ===== Make Furniture =====
