@@ -244,6 +244,13 @@ if(game.furniture >= game.contractGoal){
     ctx.fillText("Reward Earned: $800",420,320);
     ctx.fillText("Proceed to the next stage...",370,370);
 
+      } 
+  // No trees left
+if(forest.length == 0){
+
+    game.showWarning = true;
+    game.canPlant = true;
+
       }
 }
 
