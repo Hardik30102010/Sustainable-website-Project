@@ -49,27 +49,62 @@
         &copy; 2026. Hardik Awana. All rights reserved.
       </footer>
       
-    </div>
-    <div id="game">
-      <header>
-        
-      </header>
-      <canvas id="canvas">
-        
-      </canvas>
-      <div id="">
-        
-      </div>
-      <footer>
-        
-      </footer>
-    </div>
-    <div id="">
-      
-    </div>
     
+
+
+    <div id="game" class="page active">
+
+        <header>
+            <h1>🌳 Sustainable Factory</h1>
+            <p>Build your factory while protecting nature.</p>
+        </header>
+
+        <section id="instructions">
+            <h2>Your Mission</h2>
+            <p>1. Accept the school's furniture contract.</p>
+            <p>2. Click trees to collect wood.</p>
+            <p>3. Press SPACE to manufacture furniture.</p>
+            <p>4. Plant trees to help restore the forest.</p>
+        </section>
+
+        <section id="game-area">
+            <canvas id="canvas" width="1200" height="700"></canvas>
+        </section>
+
+    </div>
+
+
+    <div id="end" class="page">
+
+        <header>
+            <h1>🌍 Game Completed!</h1>
+            <p>Your choices have shaped the future of your factory.</p>
+        </header>
+
+        <section id="final-results">
+            <h2>📊 Your Results</h2>
+
+            <p id="final-money">Money Earned: $0</p>
+            <p id="final-furniture">Furniture Made: 0</p>
+            <p id="final-trees-cut">Trees Cut: 0</p>
+            <p id="final-trees-planted">Trees Planted: 0</p>
+
+            <h2 id="final-score">Sustainability Score: 0%</h2>
+        </section>
+
+        <section id="lesson">
+            <h2>🌱 Lesson Learned</h2>
+            <p>Natural resources need time to recover.</p>
+            <p>Planting trees today helps protect forests for future generations.</p>
+        </section>
+
+        <button onclick="location.reload()">Play Again</button>
+
+    </div>
+
+
     <script>
-     function showpage(id) {
+     function showPage(id) {
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     document.getElementById(id).classList.add('active');
      }
