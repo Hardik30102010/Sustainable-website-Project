@@ -518,10 +518,17 @@ canvas.addEventListener("click", function(e){
             my <= t.y + 70
         ){
 
-            forest.splice(i,1);
-            game.treesCut++;
+            const cutTree = forest[i];
 
-            game.wood += 5;
+forest.splice(i, 1);
+
+plantSpots.push({
+    x: cutTree.x,
+    y: cutTree.y
+});
+
+game.wood += 5;
+game.treesCut++;
 
             break;
         }
