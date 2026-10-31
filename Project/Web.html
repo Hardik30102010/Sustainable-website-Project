@@ -552,6 +552,28 @@ document.addEventListener("keydown", function(e){
     }
 
 });
+      document.addEventListener("keydown", function(e) {
+    if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") {
+        player.movingLeft = true;
+        e.preventDefault();
+    }
+
+    if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") {
+        player.movingRight = true;
+        e.preventDefault();
+    }
+});
+
+document.addEventListener("keyup", function(e) {
+    if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") {
+        player.movingLeft = false;
+    }
+
+    if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") {
+        player.movingRight = false;
+    }
+});
+      
     </script>
   </body>
 </html>
