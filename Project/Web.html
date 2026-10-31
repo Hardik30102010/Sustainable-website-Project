@@ -361,7 +361,18 @@ function draw(){
 
         }
 
-    });
+    }); 
+  stumps.forEach(s => {
+    if (stump.complete && stump.naturalWidth > 0) {
+        ctx.drawImage(
+            stump,
+            s.x - 5,
+            s.y + 30,
+            60,
+            45
+        );
+    }
+});
 
   saplings.forEach(s => {
     const size = 25 + s.growth * 25;
