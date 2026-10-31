@@ -457,6 +457,20 @@ if(forest.length == 0){
 
 }
 } 
+      function updatePlayer() {
+    if (player.movingLeft) {
+        player.x -= player.speed;
+    }
+
+    if (player.movingRight) {
+        player.x += player.speed;
+    }
+
+    player.x = Math.max(
+        0,
+        Math.min(canvas.width - player.width, player.x)
+    );
+      }
       
 
 // ===== Loop =====
