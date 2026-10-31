@@ -469,6 +469,34 @@ if(forest.length == 0){
 
 }
 } 
+      canvas.addEventListener("click", function(e) {
+    const rect = canvas.getBoundingClientRect();
+
+    const mx = (e.clientX - rect.left) * canvas.width / rect.width;
+    const my = (e.clientY - rect.top) * canvas.height / rect.height;
+
+    for (let i = 0; i < plantSpots.length; i++) {
+        const spot = plantSpots[i];
+
+        if (
+            mx >= spot.x - 15 &&
+            mx <= spot.x + 65 &&
+            my >= spot.y - 15 &&
+            my <= spot.y + 80
+        ) {
+            saplings.push({
+                x: spot.x,
+                y: spot.y,
+                growth: 0
+            });
+
+            plantSpots.splice(i, 1);
+            game.treesPlanted++;
+            break;
+        }
+    }
+});
+      
       function updatePlayer() {
     if (player.movingLeft) {
         player.x -= player.speed;
@@ -530,7 +558,7 @@ plantSpots.push({
 game.wood += 5;
 game.treesCut++;
 
-            break;
+          
         }
 
     }
