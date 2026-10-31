@@ -364,7 +364,13 @@ function draw(){
 
     }
     if (owner.complete && owner.naturalWidth > 0) {
-    ctx.drawImage(owner, 740, 350, 80, 100);
+    ctx.drawImage(
+        owner,
+        player.x,
+        player.y,
+        player.width,
+        player.height
+    );
       }
   
 
