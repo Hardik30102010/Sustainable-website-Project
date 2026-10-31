@@ -544,9 +544,10 @@ if(forest.length == 0){
 // ===== Loop =====
 function gameLoop() {
     updatePlayer();
+    updateSaplings();
     draw();
     requestAnimationFrame(gameLoop);
-      }
+}
 
 gameLoop();
       // ===== Contract =====
