@@ -480,13 +480,11 @@ if(forest.length == 0){
       
 
 // ===== Loop =====
-function gameLoop(){
-
+function gameLoop() {
+    updatePlayer();
     draw();
-
     requestAnimationFrame(gameLoop);
-
-}
+      }
 
 gameLoop();
       // ===== Contract =====
