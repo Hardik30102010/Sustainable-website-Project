@@ -469,6 +469,20 @@ if(forest.length == 0){
 
 }
 } 
+      function updateSaplings() {
+    for (let i = saplings.length - 1; i >= 0; i--) {
+        saplings[i].growth += 0.003;
+
+        if (saplings[i].growth >= 1) {
+            forest.push({
+                x: saplings[i].x,
+                y: saplings[i].y
+            });
+
+            saplings.splice(i, 1);
+        }
+    }
+      }
       canvas.addEventListener("click", function(e) {
     const rect = canvas.getBoundingClientRect();
 
