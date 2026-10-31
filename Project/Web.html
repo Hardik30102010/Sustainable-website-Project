@@ -423,10 +423,33 @@ function draw(){
     ctx.fillStyle="black";
     ctx.font="24px Arial";
 
-    ctx.fillText("Money : ₹" + game.money,20,40);
-    ctx.fillText("Wood : " + game.wood,20,75);
-    ctx.fillText("Trees : " + forest.length,20,110);
-    ctx.fillText("Furniture : " + game.furniture,20,145);
+    function drawHUD() {
+    ctx.fillStyle = "rgba(255,255,255,0.9)";
+    ctx.fillRect(10, 10, 300, 165);
+
+    ctx.font = "24px Arial";
+    ctx.fillStyle = "#222";
+
+    if (coin.complete && coin.naturalWidth > 0) {
+        ctx.drawImage(coin, 20, 20, 30, 30);
+    }
+    ctx.fillText("₹" + game.money, 65, 43);
+
+    if (woodIcon.complete && woodIcon.naturalWidth > 0) {
+        ctx.drawImage(woodIcon, 20, 55, 30, 30);
+    }
+    ctx.fillText(game.wood, 65, 79);
+
+    if (treeIcon.complete && treeIcon.naturalWidth > 0) {
+        ctx.drawImage(treeIcon, 20, 90, 30, 30);
+    }
+    ctx.fillText(forest.length, 65, 114);
+
+    if (furnitureIcon.complete && furnitureIcon.naturalWidth > 0) {
+        ctx.drawImage(furnitureIcon, 20, 125, 30, 30);
+    }
+    ctx.fillText(game.furniture, 65, 149);
+      }
 ctx.fillText("Contract : " + game.furniture + " / " + game.contractGoal,20,180);
 
 ctx.font = "18px Arial";
