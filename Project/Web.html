@@ -676,6 +676,17 @@ stumps.push({
 
 game.wood += 5;
 game.treesCut++;
+          if (game.treesCut === 1) {
+    game.message = "You cut your first tree. Remember, trees are natural resources!";
+}
+
+if (game.treesCut === 5) {
+    game.message = "Five trees gone! Forests cannot recover as quickly as we consume them.";
+}
+
+if (forest.length === 0) {
+    game.message = "Your forest is exhausted! You need to restore it before depending on more wood.";
+      }
 
           
         }
