@@ -533,6 +533,29 @@ if(forest.length == 0){
 }
   drawHUD();
 } 
+
+function nextDay() {
+    game.day++;
+
+    for (let i = saplings.length - 1; i >= 0; i--) {
+        let s = saplings[i];
+
+        if (s.wateredDay !== game.day - 1) {
+            game.message = "A sapling was not watered yesterday. Plants need regular care!";
+        }
+
+        if (s.careDays >= 3) {
+            forest.push({
+                x: s.x,
+                y: s.y
+            });
+
+            saplings.splice(i, 1);
+            game.message = "A sapling has grown into a young tree! Nature takes time.";
+        }
+    }
+      }
+      
 function waterNearbySapling() {
     for (let i = 0; i < saplings.length; i++) {
         let s = saplings[i];
