@@ -594,10 +594,14 @@ function waterNearbySapling() {
             my <= spot.y + 80
         ) {
             saplings.push({
-                x: spot.x,
-                y: spot.y,
-                growth: 0
-            });
+    x: spot.x,
+    y: spot.y,
+    careDays: 0,
+    wateredDay: 0
+});
+
+game.treesPlanted++;
+game.message = "You planted a sapling! It needs water and care.";
 
             plantSpots.splice(i, 1);
             game.treesPlanted++;
