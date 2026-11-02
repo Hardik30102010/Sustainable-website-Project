@@ -533,19 +533,27 @@ if(forest.length == 0){
 }
   drawHUD();
 } 
-      function updateSaplings() {
-    for (let i = saplings.length - 1; i >= 0; i--) {
-        saplings[i].growth += 0.003;
+function waterNearbySapling() {
+    for (let i = 0; i < saplings.length; i++) {
+        let s = saplings[i];
 
-        if (saplings[i].growth >= 1) {
-            forest.push({
-                x: saplings[i].x,
-                y: saplings[i].y
-            });
+        let distance = Math.abs(player.x - s.x);
 
-            saplings.splice(i, 1);
+        if (distance < 100) {
+            if (s.wateredDay === game.day) {
+                game.message = "You have already watered this sapling today!";
+                return;
+            }
+
+            s.wateredDay = game.day;
+            s.careDays++;
+
+            game.message = "Sapling watered! Keep caring for it.";
+            return;
         }
     }
+
+    game.message = "Move closer to a sapling to water it.";
       }
       canvas.addEventListener("click", function(e) {
     const rect = canvas.getBoundingClientRect();
